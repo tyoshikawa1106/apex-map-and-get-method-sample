@@ -1,0 +1,24 @@
+<apex:page controller="RepeatAndMapDemoController" showHeader="true" sidebar="false" readOnly="true" tabStyle="Account">
+    <div id="vf-page">
+        <apex:form id="form">
+            <apex:repeat value="{!accounts}" var="item">
+                <apex:pageBlock title="{!item.Name}">
+                    <apex:pageBlockTable value="{!TargetContactMap[item.Id]}" var="c">
+                        <apex:column headerValue="{!$ObjectType.Contact.Fields.Name.Label}">
+                            <apex:outputField value="{!c.Name}" />
+                        </apex:column>
+                        <apex:column headerValue="{!$ObjectType.Account.Fields.Name.Label}">
+                            <apex:outputField value="{!c.Account.Name}" />
+                        </apex:column>
+                        <apex:column headerValue="{!$ObjectType.Contact.Fields.Department.Label}">
+                            <apex:outputField value="{!c.Department}" />
+                        </apex:column>
+                        <apex:column headerValue="{!$ObjectType.Contact.Fields.Title.Label}">
+                            <apex:outputField value="{!c.Title}" />
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlock>
+            </apex:repeat>
+        </apex:form>
+    </div>
+</apex:page>
